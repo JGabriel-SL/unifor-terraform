@@ -1,0 +1,45 @@
+.terraform/
+**/.terraform/*
+
+# Arquivos de estado do Terraform (NUNCA suba esses arquivos, eles têm dados sensíveis)
+*.tfstate
+*.tfstate.*
+
+# Logs de erro do Terraform
+crash.log
+crash.*.log
+
+# Arquivos de variáveis com informações sensíveis (senhas, tokens)
+*.tfvars
+*.tfvars.json
+
+# Arquivos de lock (opcional ignorar o hcl, mas obrigatório ignorar o info)
+.terraform.tfstate.lock.info
+
+# -----------------------------------------------------------------------------
+# ANSIBLE
+# -----------------------------------------------------------------------------
+# Arquivos de retry do Ansible (gerados quando um playbook falha)
+*.retry
+
+# O arquivo hosts.ini que estamos gerando dinamicamente pelo Terraform.
+# Como os IPs mudam a cada 'apply', comitar isso só gera conflitos.
+hosts.ini
+
+# -----------------------------------------------------------------------------
+# SEGURANÇA E CHAVES
+# -----------------------------------------------------------------------------
+# Ignorar chaves privadas caso você gere alguma na pasta do projeto por engano
+*.pem
+*.key
+*.pkcs12
+*.pfx
+*.p12
+
+# -----------------------------------------------------------------------------
+# IDE E SISTEMA OPERACIONAL
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

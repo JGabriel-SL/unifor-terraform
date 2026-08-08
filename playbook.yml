@@ -1,0 +1,23 @@
+---
+- name: Configurar Servidor Web com Nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Atualizar o apt e instalar o Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Garantir que o Nginx esta rodando e habilitado na inicializacao
+      ansible.builtin.systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Substituir a pagina padrao por uma personalizada
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        src: index.html
+          
